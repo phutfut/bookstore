@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'kaminari'
+gem 'kaminari-bootstrap', '~> 3.0.1'
+
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'autoprefixer-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

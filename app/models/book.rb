@@ -2,7 +2,7 @@ class Book < ActiveRecord::Base
 
 scope :bargains, -> { where('price < 10.00') }
 scope :by, ->(author) { where('author = ?', author) }
-has_many :reviews
+has_many :reviews, dependent: :destroy
 
 validates :title, :author, :pages, :price, presence: true
 
