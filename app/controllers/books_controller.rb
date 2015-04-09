@@ -15,16 +15,22 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    @book.save
-    redirect_to @book
+    if @book.save
+      redirect_to @book, notice: "#{@book.title} was created!"
+    else
+      render :new
+    end
   end
 
   def edit
   end
 
   def update
-    @book.update(book_params) #book_params are the parameters it uses to update
-    redirect_to @book #redirect to the book
+    if @book.update(book_params) #book_params are the parameters it uses to update
+      redirect_to @book, notice: "#{@book.title} was updated!" #redirect to the book
+    else
+      render :new
+    end
   end
 
   def destroy
