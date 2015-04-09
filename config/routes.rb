@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  root 'books#index'
   resources :books
   #get "/books" => "books#index", as: 'books'
   #get "/books/new" => "books#new", as: 'new_book'
