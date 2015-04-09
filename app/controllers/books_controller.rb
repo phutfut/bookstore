@@ -4,8 +4,9 @@ class BooksController < ApplicationController
     @books = Book.all
   end
 
+  before_action:set_book, only: [ :show, :edit, :update, :destroy ]
+
   def show
-    @book = Book.find(params[:id])
   end
 
   def new
@@ -19,19 +20,26 @@ class BooksController < ApplicationController
   end
 
   def edit
-    @book = Book.find(params[:id])
   end
 
   def update
-    @book = Book.find(params[:id])
     @book.update(book_params) #book_params are the parameters it uses to update
     redirect_to @book #redirect to the book
+  end
+
+  def destroy
+    @book.destroy
+    redirect_to books_url
   end
 
   private
 
   def book_params
     params.require(:book).permit(:title, :author, :pages, :price)
+  end
+
+  def set_book
+    @book = Book.find(params[:id])
   end
 
 end
